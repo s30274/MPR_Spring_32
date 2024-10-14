@@ -31,8 +31,14 @@ public class MyRestController {
         this.jajcoService.add(jajco);
     }
 
-    @DeleteMapping("jajco/remove/{id}") // <- endpoint
+    @DeleteMapping("jajco/{id}") // <- endpoint
     public void removeJajco(@PathVariable Integer id){
-        this.jajcoService.remove(id);
+        this.jajcoService.getJajcoList().remove(this.jajcoService.getJajco(id));
+    }
+
+    @PutMapping("jajco/{id}")
+    public void putJajcoOrigin(@PathVariable Integer id, @RequestBody Jajco jajco){
+        this.jajcoService.getJajco(id).setName(jajco.getName());
+        this.jajcoService.getJajco(id).setOrigin(jajco.getOrigin());
     }
 }

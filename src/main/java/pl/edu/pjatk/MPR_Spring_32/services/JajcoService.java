@@ -8,7 +8,7 @@ import java.util.List;
 
 @Component
 public class JajcoService {
-    List<Jajco> jajcoList = new ArrayList<>();
+    private List<Jajco> jajcoList = new ArrayList<>();
 
     public JajcoService(){
         this.jajcoList.add(new Jajco("Jajco1", "Kurnik"));
@@ -26,9 +26,5 @@ public class JajcoService {
 
     public Jajco getJajco(Integer id) {
         return this.jajcoList.get(id);
-    }
-
-    public void remove(Integer id) {
-        this.jajcoList.remove(id);
     }
 }
