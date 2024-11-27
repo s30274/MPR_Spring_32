@@ -3,25 +3,30 @@ package pl.edu.pjatk.MPR_Spring_32;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.ResponseEntity;
+import pl.edu.pjatk.MPR_Spring_32.controller.MyRestController;
 import pl.edu.pjatk.MPR_Spring_32.model.Kanji;
-import pl.edu.pjatk.MPR_Spring_32.repository.KanjiRepository;
-import pl.edu.pjatk.MPR_Spring_32.service.KanjiService;
 import pl.edu.pjatk.MPR_Spring_32.service.StringUtilsService;
 
 import java.util.List;
-import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class MprSpring32ApplicationTests {
 
 	private StringUtilsService stringUtilsService = new StringUtilsService();
-//	@Autowired
-//	private KanjiService kanjiService;
+	@Autowired
+	private MyRestController controller;
+
+//	@Test
+//	public void contextLoads() {
+//	}
 
 	@Test
-	public void contextLoads() {
+	void contextLoads() throws Exception {
+		assertThat(controller).isNotNull();
 	}
 
 	@Test
@@ -66,11 +71,10 @@ class MprSpring32ApplicationTests {
 		assertEquals("Test", string);
 	}
 
-//	@Test
-//	public void kanjiServiceTurnsLettersToAllCapitalWhenAddingAnObject(){
-//		kanjiService.add(new Kanji("Onna", "Jyo"));
-//		List<Kanji> list = kanjiService.getKanjiByKunyomi("Onna");
-//		assertEquals("Onna", list.getFirst().getKunyomi());
-//	}
+	@Test
+	public void kanjiServiceTurnsLettersToAllCapitalWhenAddingAnObject(){
+		ResponseEntity<List<Kanji>> list = controller.getAll();
+		assertEquals(3, list.getBody().size());
+	}
 
 }

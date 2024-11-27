@@ -10,4 +10,5 @@ import java.util.List;
 public interface KanjiRepository extends CrudRepository<Kanji, Long>{
     public List<Kanji> findByKunyomi(String kunyomi);
     public List<Kanji> findByOnyomi(String onyomi);
+    public List<Kanji> findByIdentifier(Long identifier);
 }

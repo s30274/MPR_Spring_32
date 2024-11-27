@@ -10,7 +10,7 @@ public class Kanji {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private long identyfikator;
+    private long identifier;
     private String kunyomi;
     private String onyomi;
 
@@ -19,10 +19,10 @@ public class Kanji {
     public Kanji(String kunyomi, String onyomi){
         this.kunyomi = kunyomi;
         this.onyomi = onyomi;
-        this.identyfikator = genIdentyfikator(kunyomi, onyomi);
+        this.identifier = genIdentifier(kunyomi, onyomi);
     }
 
-    private long genIdentyfikator(String onyomi, String kunyomi){
+    private long genIdentifier(String onyomi, String kunyomi){
         char[] charKunyomi = kunyomi.toCharArray();
         char[] charOnyomi = onyomi.toCharArray();
         long sum = 0;
@@ -55,10 +55,10 @@ public class Kanji {
     public String getOnyomi() {
         return onyomi;
     }
-    public void setIdentyfikator() {
-        this.identyfikator = genIdentyfikator(this.kunyomi, this.onyomi);
+    public void setIdentifier() {
+        this.identifier = genIdentifier(this.kunyomi, this.onyomi);
     }
-    public long getIdentyfikator() {
-        return identyfikator;
+    public long getIdentifier() {
+        return identifier;
     }
 }

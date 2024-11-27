@@ -41,18 +41,30 @@ public class KanjiService {
     }
 
     public List<Kanji> getKanjiByKunyomi(String kunyomi) {
-        return setFirstCapitalList(this.repository.findByKunyomi(kunyomi));
+        return setFirstCapitalList(this.repository.findByKunyomi(stringUtilsService.wholeCapital(kunyomi)));
     }
 
     public List<Kanji> getKanjiByOnyomi(String onyomi) {
-        return setFirstCapitalList(this.repository.findByOnyomi(onyomi));
+        return setFirstCapitalList(this.repository.findByOnyomi(stringUtilsService.wholeCapital(onyomi)));
     }
+
+    public List<Kanji> getKanjiByIdentifier(Long identifier) {
+        return setFirstCapitalList(this.repository.findByIdentifier(identifier));
+    }
+
     public List<Kanji> getKanjiList() {
         return setFirstCapitalList((List<Kanji>) this.repository.findAll());
     }
 
-    public void add(Kanji kanji) {
-        this.repository.save(setWholeCapital(kanji));
+    public void addKanji(Kanji kanji) {
+        kanji = prepareKanji(kanji);
+        this.repository.save(kanji);
+    }
+
+    public Kanji prepareKanji(Kanji kanji){
+        setWholeCapital(kanji);
+        kanji.setIdentifier();
+        return kanji;
     }
 
     public Optional<Kanji> getKanjiById(Long id) {
@@ -65,7 +77,7 @@ public class KanjiService {
 
     public void putKanji(Kanji kanji, Long id){
         this.repository.deleteById(id);
-        kanji.setIdentyfikator();
-        this.repository.save(setWholeCapital(kanji));
+        kanji = prepareKanji(kanji);
+        this.repository.save(kanji);
     }
 }
