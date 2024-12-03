@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new kanji</title>
+</head>
+<body>
+<h1>Add new kanji</h1>
+<form action="#" th:action="@{/addForm}" th:object="${kanji}" method="post">
+    <table>
+        <tr>
+            <td><label>Kunyomi</label></td>
+            <td><label>Onyomi</label><br></td>
+        </tr>
+        <tr>
+            <td><input type="text" th:field="${kanji.kunyomi}" placeholder="kunyomi"></td>
+            <td><input type="text" th:field="${kanji.onyomi}" placeholder="onyomi"><br></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

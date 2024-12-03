@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All kanji</title>
+</head>
+<body>
+<h1>List of all kanji</h1>
+<table>
+    <tr>
+        <th>Kunyomi</th>
+        <th>Onyomi</th>
+    </tr>
+    <tr th:each="kanji : ${kanjiList}">
+        <td th:text="${kanji.kunyomi}"></td>
+        <td th:text="${kanji.onyomi}"></td>
+    </tr>
+</table>
+</body>
+</html>
