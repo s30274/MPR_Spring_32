@@ -13,11 +13,11 @@
             <td><label>Onyomi</label><br></td>
         </tr>
         <tr>
-            <td><input type="text" th:field="${kanji.kunyomi}" placeholder="kunyomi"></td>
-            <td><input type="text" th:field="${kanji.onyomi}" placeholder="onyomi"><br></td>
+            <td><input type="text" id="kunyomi" th:field="${kanji.kunyomi}" placeholder="kunyomi"></td>
+            <td><input type="text" id="onyomi" th:field="${kanji.onyomi}" placeholder="onyomi"><br></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Submit"></td>
+            <td><input type="submit" id="submit" value="Submit"></td>
         </tr>
     </table>
 </form>
